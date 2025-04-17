@@ -6,7 +6,31 @@ body {
   width: 1100px;
   margin: 0 auto;
 }
+.warp-v2 {
+  width: 980px;
+  margin: 0 auto;
+}
 
 .countingGraph01 {
   background: url(../image/topbar.png) no-repeat 0 9999px;
+}
+
+.countingGraph02 {
+  background: url(../image/index.png) no-repeat 0 9999px;
+}
+
+.countingGraphCover {
+  background: url(../image/coverall.png) no-repeat 0 9999px;
+}
+
+.countingGraphIcon {
+  background: url(../image/iconall.png) no-repeat 0 9999px;
+}
+
+.countingGraphIcon02 {
+  background: url(../image/icon.png) no-repeat 0 9999px;
+}
+
+.countingGraphButton {
+  background: url(../image/button2.png) no-repeat 0 9999px;
 }
