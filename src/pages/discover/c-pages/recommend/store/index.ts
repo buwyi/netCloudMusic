@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getBanners, getHotRecommend, getNewAlbum, getSettleSinger, getTopList } from '../service';
-import { Album, Artist, Banner, HotRecommend, Playlist } from './type';
+import { Album, Artist, Banner, HotRecommend, Playlist } from '../../../../../types/type';
 
 export const fetchBannerDataAction = createAsyncThunk('banners', async (args, { dispatch }) => {
   const res = await getBanners();

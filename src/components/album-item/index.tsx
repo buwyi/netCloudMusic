@@ -1,4 +1,4 @@
-import { Album } from '@/pages/discover/c-pages/recommend/store/type';
+import { Album } from '@/types/type';
 import { memo } from 'react';
 import type { ReactNode, FC } from 'react';
 import { AlbumItemWrapper } from './style';

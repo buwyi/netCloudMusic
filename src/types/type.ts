@@ -179,6 +179,7 @@ export interface H {
   fid: number;
   size: number;
   vd: number;
+  sr: number;
 }
 
 export interface M {
@@ -186,6 +187,7 @@ export interface M {
   fid: number;
   size: number;
   vd: number;
+  sr: number;
 }
 
 export interface L {
@@ -193,6 +195,7 @@ export interface L {
   fid: number;
   size: number;
   vd: number;
+  sr: number;
 }
 
 export interface Sq {
@@ -200,6 +203,7 @@ export interface Sq {
   fid: number;
   size: number;
   vd: number;
+  sr: number;
 }
 
 export interface Hr {
@@ -207,6 +211,7 @@ export interface Hr {
   fid: number;
   size: number;
   vd: number;
+  sr: number;
 }
 
 export interface VideoInfo {
@@ -350,4 +355,54 @@ export interface Playlist {
   bizExtInfo: BizExtInfo;
   toplistType: string;
 }
-
+export interface Song {
+  name: string;
+  mainTitle?: any;
+  additionalTitle?: any;
+  id: number;
+  pst: number;
+  t: number;
+  ar: Ar[];
+  alia?: any[];
+  pop: number;
+  st: number;
+  rt: string;
+  fee: number;
+  v: number;
+  crbt?: any;
+  cf: string;
+  al: Al;
+  dt: number;
+  h: H;
+  m: M;
+  l: L;
+  sq: Sq;
+  hr?: any;
+  a?: any;
+  cd: string;
+  no: number;
+  rtUrl?: any;
+  ftype: number;
+  rtUrls: any[];
+  djId: number;
+  copyright: number;
+  s_id: number;
+  mark: number;
+  originCoverType: number;
+  originSongSimpleData?: any;
+  tagPicList?: any;
+  resourceState: boolean;
+  version: number;
+  songJumpInfo?: any;
+  entertainmentTags?: any;
+  awardTags?: any;
+  displayTags?: any;
+  single: number;
+  noCopyrightRcmd?: any;
+  mv: number;
+  rtype: number;
+  rurl?: any;
+  mst: number;
+  cp: number;
+  publishTime: number;
+}

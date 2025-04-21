@@ -34,3 +34,7 @@ body {
 .countingGraphButton {
   background: url(../image/button2.png) no-repeat 0 9999px;
 }
+
+.countingGraphPlayBar {
+  background: url(../image/playbar.png) no-repeat 0 9999px;
+}

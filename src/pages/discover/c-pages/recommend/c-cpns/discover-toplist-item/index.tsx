@@ -2,7 +2,9 @@ import { memo } from 'react';
 import type { ReactNode, FC } from 'react';
 import { DiscoverTopListItemWrapper } from './style';
 import { getImageSize } from '@/utils/format';
-import { Playlist } from '../../store/type';
+import { Playlist } from '../../../../../../types/type';
+import { useAppDispatch } from '@/store';
+import { fetchCurrentSongAction } from '@/pages/player/store/player';
 
 interface IProps {
   children?: ReactNode;
@@ -12,6 +14,11 @@ interface IProps {
 const DiscoverTopListItem: FC<IProps> = (props) => {
   const playlist = props.itemData;
   const { tracks } = playlist;
+  const dispatch = useAppDispatch();
+
+  const handlePlayBtnClick = (id: number) => {
+    dispatch(fetchCurrentSongAction(id));
+  };
   return (
     <DiscoverTopListItemWrapper>
       <div className="header">
@@ -33,7 +40,10 @@ const DiscoverTopListItem: FC<IProps> = (props) => {
               <div className="info">
                 <div className="name">{item.name}</div>
                 <div className="operator">
-                  <button className="btn play countingGraph02"></button>
+                  <button
+                    className="btn play countingGraph02"
+                    onClick={() => handlePlayBtnClick(item.id)}
+                  ></button>
                   <button className="btn add countingGraphIcon02"></button>
                   <button className="btn favor countingGraph02"></button>
                 </div>
