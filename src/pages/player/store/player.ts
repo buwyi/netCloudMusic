@@ -1,5 +1,5 @@
 import { Song } from '@/types/type';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit';
 import { getCurrentSongDetail, getLyrics } from '../service';
 import { IRootState } from '@/store';
 import { ILyric, parseLyrics } from '@/utils/parser_lyrics';
@@ -10,7 +10,7 @@ export const fetchCurrentSongAction = createAsyncThunk<void, number, { state: IR
   async (id, { dispatch, getState }) => {
     //当需要播放歌曲时,先在播放队列中寻找是否存在
     const playList = getState().player.playList;
-    const findIndex = playList.findIndex((item) => item.id == id);
+    const findIndex = playList.findIndex((item) => item.id === id);
     if (findIndex === -1) {
       //不存在则发送网络请求，请求歌曲信息
       const res = await getCurrentSongDetail(id);
@@ -57,8 +57,35 @@ export const fetchChangeMusicAction = createAsyncThunk<void, boolean, { state: I
     dispatch(changeCurrentSongAction(playList[newIndex]));
     dispatch(changePlayListIndexAction(newIndex));
     const lyricRes = await getLyrics(playList[newIndex].id);
-    console.log(lyricRes);
+    // console.log(lyricRes);
     dispatch(changeLyricsAction(parseLyrics(lyricRes.lrc.lyric)));
+  },
+);
+//删除歌曲列表中的某首歌
+export const fetchDeleteSongAction = createAsyncThunk<void, number, { state: IRootState }>(
+  'deleteMusic',
+  async (id: number, { dispatch, getState }) => {
+    const playList = getState().player.playList;
+    const findIndex = playList.findIndex((item) => item.id === id);
+    const playListIndex = getState().player.playListIndex;
+    if (findIndex === playListIndex) {
+      //删除歌曲===正在播放歌曲
+      const newPlayList = playList.filter((item) => item.id != id);
+      dispatch(changeCurrentSongAction(playList[0])); //切换到第一首歌
+      dispatch(changePlayListAction(newPlayList));
+      // console.log(newPlayList);
+      dispatch(changePlayListIndexAction(0)); //播放序号切换
+    } else if (findIndex < playListIndex) {
+      //小于正在播放
+      const newPlayList = playList.filter((item) => item.id != id);
+      dispatch(changePlayListAction(newPlayList));
+      // console.log(newPlayList);
+      dispatch(changePlayListIndexAction(playListIndex - 1)); //序号-1
+    } else {
+      //大于正在播放
+      const newPlayList = playList.filter((item) => item.id != id);
+      dispatch(changePlayListAction(newPlayList));
+    }
   },
 );
 interface IPlayerState {

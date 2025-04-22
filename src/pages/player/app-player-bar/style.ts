@@ -10,11 +10,13 @@ export const AppPlayerBarWrapper = styled.div`
   right: 0;
   bottom: 0;
   height: 52px;
+  /* box-sizing: content-box; */
   .bg {
     background-position: 0 0;
     background-repeat: repeat;
     color: aliceblue;
     height: 52px;
+    /* box-sizing: content-box; */
   }
 
   .context {
@@ -222,13 +224,15 @@ export const PlayerOperatorWrapper = styled.div<IPlayerOperatorWrapper>`
     }
 
     .playlist {
+      font-size: 12px;
+      color: #666;
       padding-left: 18px;
       background-position: -42px -68px;
       &:hover {
         background-position: -42px -98px;
       }
       text-align: center;
-      color: #ccc;
+      /* color: #ccc; */
       width: 59px;
     }
   }

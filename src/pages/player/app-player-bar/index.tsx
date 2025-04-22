@@ -24,12 +24,13 @@ interface IProps {
 }
 
 const AppPlayerBar: FC<IProps> = () => {
-  const { currentSong, lyrics, lyricIndex, playMode } = useAppSelector(
+  const { currentSong, lyrics, lyricIndex, playMode, playList } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,
       lyrics: state.player.lyrics,
       lyricIndex: state.player.lyricIndex,
       playMode: state.player.playMode,
+      playList: state.player.playList,
     }),
     shallowEqual,
   );
@@ -39,6 +40,7 @@ const AppPlayerBar: FC<IProps> = () => {
   const [progress, setProgress] = useState(0); //百分比
   const [currentTime, setCurrentTime] = useState(0); //秒
   const [duration, setDuration] = useState(0); //毫秒
+  const [isVisible, setIsVisible] = useState(false); //设置playlist的可见
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -98,7 +100,7 @@ const AppPlayerBar: FC<IProps> = () => {
     if (lyricIndex == index || index == -1) return;
     //更新
     dispatch(changeLyricIndexAction(index));
-    console.log(lyrics[index].content);
+    // console.log(lyrics[index].content);
   };
   //歌曲播放结束事件
   const handleTimeEnded = () => {
@@ -116,6 +118,10 @@ const AppPlayerBar: FC<IProps> = () => {
     audioRef.current!.currentTime = newCurrentTime / 1000;
     setCurrentTime(newCurrentTime / 1000);
     setProgress(value);
+  };
+  //点击播放列表显示playlist组件事件
+  const handleShowPlayListClick = () => {
+    setIsVisible(!isVisible);
   };
   return (
     <AppPlayerBarWrapper>
@@ -172,13 +178,19 @@ const AppPlayerBar: FC<IProps> = () => {
                 className="btn countingGraphPlayBar loop"
                 onClick={handleLoopBtnClick}
               ></button>
-              <button className="btn countingGraphPlayBar playlist"></button>
+              <button
+                className="btn countingGraphPlayBar playlist"
+                onClick={handleShowPlayListClick}
+              >
+                {playList.length}
+              </button>
             </div>
           </PlayerOperatorWrapper>
         </div>
         <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} onEnded={handleTimeEnded}></audio>
       </div>
-      <AppPlayerBarPlaylist />
+      {isVisible && <AppPlayerBarPlaylist />}
+      {/* <AppPlayerBarPlaylist /> */}
     </AppPlayerBarWrapper>
   );
 };

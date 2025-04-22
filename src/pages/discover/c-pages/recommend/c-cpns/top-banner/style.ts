@@ -36,7 +36,7 @@ export const BannerLeft = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    z-index: 999;
+    z-index: 99;
 
     > li {
       margin: 0 2px;

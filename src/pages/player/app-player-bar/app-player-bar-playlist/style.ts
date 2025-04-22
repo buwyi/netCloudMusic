@@ -9,6 +9,8 @@ export const AppPlayerBarPlayListWrapper = styled.div`
   width: 986px;
   height: 301px;
   margin-left: -493px;
+  /* box-sizing: content-box; */
+  /* z-index: 9999; */
 
   .playlist-header {
     background: url(${headerBG});
@@ -118,6 +120,7 @@ export const AppPlayerBarPlayListWrapper = styled.div`
   }
 
   .playlist-body {
+    box-sizing: content-box;
     position: absolute;
     left: 0;
     top: 41px;
@@ -134,7 +137,10 @@ export const AppPlayerBarPlayListWrapper = styled.div`
       z-index: 4;
       height: 260px;
       width: 558px;
-      overflow: hidden;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       .songs {
         font-size: 12px;
@@ -143,6 +149,12 @@ export const AppPlayerBarPlayListWrapper = styled.div`
         .active {
           .col {
             color: #fff;
+          }
+          .col-1 {
+            .playicon {
+              /* display: block; */
+              visibility: visible;
+            }
           }
         }
         li {
@@ -173,6 +185,7 @@ export const AppPlayerBarPlayListWrapper = styled.div`
             /* width: 10px; */
             .playicon {
               display: block;
+              visibility: hidden;
               background: url(${playlistIcon}) no-repeat -182px 0;
               width: 10px;
               height: 13px;
@@ -264,6 +277,35 @@ export const AppPlayerBarPlayListWrapper = styled.div`
               width: 14px;
               cursor: default;
             }
+          }
+        }
+      }
+    }
+
+    .songlyrics {
+      /* position: relative;
+      flex: 2; */
+      position: absolute;
+      right: 40px;
+      top: 0;
+      height: 219px;
+      width: 354px;
+      margin: 21px 0 20px 0;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .lyrics-content {
+        .lrc-item {
+          font-size: 12px;
+          height: 32px;
+          text-align: center;
+          color: #989898;
+          &.active {
+            color: #fff;
+            font-size: 14px;
           }
         }
       }
