@@ -3,12 +3,16 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import counterReducer from './modules/counter';
 import recommendReducer from '../pages/discover/c-pages/recommend/store';
 import playerReducer from '../pages/player/store/player';
+import loginReducer from '../components/login-window/store';
+import userReducer from './modules/user';
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
     recommend: recommendReducer,
     player: playerReducer,
+    login: loginReducer,
+    user: userReducer,
   },
 });
 

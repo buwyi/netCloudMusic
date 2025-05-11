@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@ant-design/dark-theme':
+        specifier: ^2.0.2
+        version: 2.0.2(antd@5.24.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@ant-design/icons':
         specifier: ^6.0.0
         version: 6.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -128,6 +131,11 @@ packages:
     peerDependencies:
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
+
+  '@ant-design/dark-theme@2.0.2':
+    resolution: {integrity: sha512-wDzyDA8hky26PKMZ2pcqGq1rfprObGRbZcdh8C+aYH9JA7dzeQvKJ5CctOdjQKl/YyyR7HW5nFUcZfNOayfORw==}
+    peerDependencies:
+      antd: ^4.0.0
 
   '@ant-design/fast-color@2.0.6':
     resolution: {integrity: sha512-y2217gk4NqL35giHl72o6Zzqji9O7vHh9YmhUVkPtAOpoTCH4uWxo/pr4VE8t0+ChEPs0qo4eJRC5Q1eXWo3vA==}
@@ -2075,6 +2083,10 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       stylis: 4.3.6
+
+  '@ant-design/dark-theme@2.0.2(antd@5.24.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+    dependencies:
+      antd: 5.24.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   '@ant-design/fast-color@2.0.6':
     dependencies:

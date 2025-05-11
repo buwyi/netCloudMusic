@@ -5,12 +5,19 @@ import { NavLink } from 'react-router-dom';
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import './style.css';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { fetchShowWindowAction } from '../login-window/store';
+import User from './c-cpns/user';
 
 interface IProps {
   children?: ReactNode;
 }
 
 const AppHeader: FC<IProps> = () => {
+  const dispatch = useAppDispatch();
+  const { isLogin } = useAppSelector((state) => ({
+    isLogin: state.login.isLogin,
+  }));
   const showItem = (item: any) => {
     if (item.type === 'path') {
       return (
@@ -36,8 +43,12 @@ const AppHeader: FC<IProps> = () => {
     }
   };
 
+  const handleLoginButtonAction = () => {
+    dispatch(fetchShowWindowAction(true));
+  };
+
   return (
-    <div className="h-[70px] bg-[#242424] text-[14px] text-[#fff] relative z-1000 box-border [border-bottom:1px_solid_#000]">
+    <div className="h-[70px] bg-[#242424] text-[14px] text-[#fff] relative z-99 box-border [border-bottom:1px_solid_#000]">
       <div className="content w-[1100px] mx-auto flex justify-start">
         <h1 className="countingGraph01 float-left w-[176px] h-[69px] m-0 ![background-position:0_0]">
           <a href="/#" className="float-left w-[157px] h-full pr-[20px] -indent-999"></a>
@@ -58,12 +69,19 @@ const AppHeader: FC<IProps> = () => {
           <div className="search w-[158px] h-[32px] rounded-[16px] text-[12px]">
             <Input placeholder="音乐/视频/电台" prefix={<SearchOutlined />}></Input>
           </div>
-          <div className="w-[90px] h-[32px] leading-[32px] text-center [border:1px_solid_#666] rounded-[16px] m-[0_16px]">
+          <div className="w-[90px] h-[32px] leading-[32px] text-center [border:1px_solid_#666] rounded-[16px] m-[0_16px] cursor-pointer">
             创作者中心
           </div>
-          <div className="">登陆</div>
+          {isLogin ? (
+            <User />
+          ) : (
+            <div className="cursor-pointer" onClick={handleLoginButtonAction}>
+              登陆
+            </div>
+          )}
         </div>
       </div>
+      <div className="divider h-[5px] bg-[#C20C0C] relative"></div>
     </div>
   );
 };

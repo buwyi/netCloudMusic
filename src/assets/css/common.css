@@ -1,5 +1,5 @@
 body {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .warp-v1 {
@@ -37,4 +37,15 @@ body {
 
 .countingGraphPlayBar {
   background: url(../image/playbar.png) no-repeat 0 9999px;
+}
+
+.countingGraphIcon03 {
+  background-image: url(../image/toplist.png);
+  background-repeat: no-repeat;
+}
+
+:global {
+  .ant-dropdown-menu {
+    background-color: #ccc !important;
+  }
 }

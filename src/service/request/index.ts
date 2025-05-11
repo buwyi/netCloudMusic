@@ -11,6 +11,14 @@ class HYRequest {
     //每个instance实例添加拦截器
     this.instance.interceptors.request.use(
       (config) => {
+        if (!config.params) {
+          config.params = {};
+        }
+        const cookie = localStorage.getItem('MUSIC_U');
+        if (cookie) {
+          config.params.cookie = `${cookie}`;
+        }
+        config.params.timestamp = Date.now();
         return config;
       },
       (err) => {

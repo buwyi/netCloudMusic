@@ -14,7 +14,7 @@ export const DiscoverLoginWrapper = styled.div`
     font-size: 12px;
   }
 
-  a {
+  button {
     margin-top: 16px;
     display: inline-block;
     width: 100px;

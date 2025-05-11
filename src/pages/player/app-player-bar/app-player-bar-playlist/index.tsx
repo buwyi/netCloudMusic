@@ -10,9 +10,10 @@ import { scrollTo } from '@/utils/ui-helper';
 
 interface IProps {
   children?: ReactNode;
+  setIsVisible: any;
 }
 
-const AppPlayerBarPlayList: FC<IProps> = () => {
+const AppPlayerBarPlayList: FC<IProps> = (props) => {
   const dispatch = useAppDispatch();
   const { currentSong, playList, playListIndex, lyrics, lyricIndex } = useAppSelector(
     (state) => ({
@@ -27,6 +28,7 @@ const AppPlayerBarPlayList: FC<IProps> = () => {
 
   const lyricRef = useRef<HTMLDivElement>(null);
 
+  const { setIsVisible } = props;
   // 当歌词序号变化时，触发歌词滚动
   useEffect(() => {
     if (lyricIndex > 0 && lyricIndex < 3) return;
@@ -81,6 +83,9 @@ const AppPlayerBarPlayList: FC<IProps> = () => {
     dispatch(fetchCurrentSongAction(parseInt(songId)));
   };
 
+  const handleCloseButton = () => {
+    setIsVisible(false);
+  };
   return (
     <AppPlayerBarPlayListWrapper>
       <div className="playlist-header">
@@ -95,7 +100,7 @@ const AppPlayerBarPlayList: FC<IProps> = () => {
           清除
         </button>
         <p className="song-name">{playList[playListIndex].name}</p>
-        <button className="close btn"></button>
+        <button className="close btn" onClick={handleCloseButton}></button>
       </div>
       <div className="playlist-body">
         <div className="playlist-content">

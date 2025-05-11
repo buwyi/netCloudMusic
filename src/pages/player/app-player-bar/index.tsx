@@ -189,7 +189,7 @@ const AppPlayerBar: FC<IProps> = () => {
         </div>
         <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} onEnded={handleTimeEnded}></audio>
       </div>
-      {isVisible && <AppPlayerBarPlaylist />}
+      {isVisible && <AppPlayerBarPlaylist setIsVisible={setIsVisible} />}
       {/* <AppPlayerBarPlaylist /> */}
     </AppPlayerBarWrapper>
   );
