@@ -1,4 +1,4 @@
-export interface UserPoint {
+interface UserPoint {
   userId: number;
   balance: number;
   updateTime: number;
@@ -6,8 +6,7 @@ export interface UserPoint {
   status: number;
   blockBalance: number;
 }
-
-export interface PrivacyItemUnlimit {
+interface PrivacyItemUnlimit {
   area: boolean;
   college: boolean;
   gender: boolean;
@@ -15,9 +14,9 @@ export interface PrivacyItemUnlimit {
   villageAge: boolean;
 }
 
-export interface Expert {}
+interface Expert {}
 
-export interface Profile {
+interface Profile {
   privacyItemUnlimit: PrivacyItemUnlimit;
   avatarDetail?: any;
   birthday: number;
@@ -65,7 +64,7 @@ export interface Profile {
   newFollows: number;
 }
 
-export interface Binding {
+interface Binding {
   expiresIn: number;
   refreshTime: number;
   bindingTime: number;
@@ -77,13 +76,13 @@ export interface Binding {
   type: number;
 }
 
-export interface ProfileVillageInfo {
+interface ProfileVillageInfo {
   title: string;
   imageUrl?: any;
   targetUrl: string;
 }
 
-export interface UserInfo {
+export interface UserDetail {
   level: number;
   listenSongs: number;
   userPoint: UserPoint;
@@ -153,4 +152,15 @@ export interface UserAccount {
   vipType: number;
   anonimousUser: boolean;
   paidFee: boolean;
+}
+
+export interface UserLevel {
+  userId: number;
+  info: string;
+  progress: number;
+  nextPlayCount: number;
+  nextLoginCount: number;
+  nowPlayCount: number;
+  nowLoginCount: number;
+  level: number;
 }

@@ -2,6 +2,7 @@ import type { RouteObject } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 
+const Song = lazy(() => import('@/pages/song'));
 const Discover = lazy(() => import('@/pages/discover'));
 const Recommend = lazy(() => import('@/pages/discover/c-pages/recommend'));
 const Toplist = lazy(() => import('@/pages/discover/c-pages/toplist'));
@@ -64,6 +65,10 @@ const routes: RouteObject[] = [
   {
     path: '/mine',
     element: <Mine />,
+  },
+  {
+    path: '/song',
+    element: <Song />,
   },
 ];
 

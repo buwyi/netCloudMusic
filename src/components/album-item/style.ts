@@ -25,9 +25,16 @@ export const AlbumItemWrapper = styled.div`
   }
 
   .bottom {
+    cursor: pointer;
     margin-top: 10px;
     font-size: 12px;
     width: 100px;
+
+    &:hover {
+      .name {
+        text-decoration: underline;
+      }
+    }
     .name {
       color: #000;
       white-space: nowrap;

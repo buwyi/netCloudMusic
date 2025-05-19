@@ -139,7 +139,7 @@ const AppPlayerBar: FC<IProps> = () => {
             ></button>
           </PlayerControlWrapper>
           <PlayerInfoWrapper>
-            <Link to="/artist">
+            <Link to={`/song?id=${currentSong.id}`}>
               <img className="image" src={getImageSize(currentSong.al?.picUrl, 100)} alt="" />
             </Link>
             <div className="info">

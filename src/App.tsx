@@ -9,7 +9,11 @@ import { fetchCurrentSongAction } from './pages/player/store/player';
 import LoginWindow from './components/login-window';
 import { shallowEqual } from 'react-redux';
 import { changeIsLoginAction } from './components/login-window/store';
-import { fetchChangeUserAccount } from './store/modules/user';
+import {
+  fetchChangeUserAccount,
+  fetchChangeUserDetail,
+  fetchChangeUserLevel,
+} from './store/modules/user';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,7 +21,15 @@ function App() {
     dispatch(fetchCurrentSongAction(5271858));
     if (localStorage.getItem('MUSIC_U')) {
       dispatch(changeIsLoginAction(true));
+      dispatch(fetchChangeUserLevel());
+      // async () => {
+      //   await dispatch(fetchChangeUserAccount());
+      //   const uid = localStorage.getItem('uid');
+      //   dispatch(fetchChangeUserDetail(Number(uid)));
+      // };
       dispatch(fetchChangeUserAccount());
+      const uid = localStorage.getItem('uid');
+      if (uid) dispatch(fetchChangeUserDetail(Number(uid)));
     }
   }, []);
   const { showWindow } = useAppSelector(

@@ -4,7 +4,8 @@ import { DiscoverTopListItemWrapper } from './style';
 import { getImageSize } from '@/utils/format';
 import { Playlist } from '../../../../../../types/type';
 import { useAppDispatch } from '@/store';
-import { fetchCurrentSongAction } from '@/pages/player/store/player';
+import { fetchAddListAction, fetchCurrentSongAction } from '@/pages/player/store/player';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   children?: ReactNode;
@@ -18,6 +19,9 @@ const DiscoverTopListItem: FC<IProps> = (props) => {
 
   const handlePlayBtnClick = (id: number) => {
     dispatch(fetchCurrentSongAction(id));
+  };
+  const handleAddListClick = (id: number) => {
+    dispatch(fetchAddListAction(id));
   };
   return (
     <DiscoverTopListItemWrapper>
@@ -38,13 +42,18 @@ const DiscoverTopListItem: FC<IProps> = (props) => {
             <div className="item" key={item.id}>
               <div className="index">{index + 1}</div>
               <div className="info">
-                <div className="name">{item.name}</div>
+                <Link to={`/song?id=${item.id}`} className="name">
+                  {item.name}
+                </Link>
                 <div className="operator">
                   <button
                     className="btn play countingGraph02"
                     onClick={() => handlePlayBtnClick(item.id)}
                   ></button>
-                  <button className="btn add countingGraphIcon02"></button>
+                  <button
+                    className="btn add countingGraphIcon02"
+                    onClick={() => handleAddListClick(item.id)}
+                  ></button>
                   <button className="btn favor countingGraph02"></button>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import recommendReducer from '../pages/discover/c-pages/recommend/store';
 import playerReducer from '../pages/player/store/player';
 import loginReducer from '../components/login-window/store';
 import userReducer from './modules/user';
+import songReducer from '../pages/song/store';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     player: playerReducer,
     login: loginReducer,
     user: userReducer,
+    song: songReducer,
   },
 });
 

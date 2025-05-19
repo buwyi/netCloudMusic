@@ -88,6 +88,20 @@ export const fetchDeleteSongAction = createAsyncThunk<void, number, { state: IRo
     }
   },
 );
+//添加歌曲到播放列表
+export const fetchAddListAction = createAsyncThunk<void, number, { state: IRootState }>(
+  'addMusicToList',
+  async (id: number, { dispatch, getState }) => {
+    const playList = getState().player.playList;
+    const findIndex = playList.findIndex((item) => item.id === id);
+    if (findIndex === -1) {
+      const res = await getCurrentSongDetail(id);
+      if (!res.songs.length) return;
+      const newPlayList = [...playList, res.songs[0]];
+      dispatch(changePlayListAction(newPlayList));
+    }
+  },
+);
 interface IPlayerState {
   currentSong: Song;
   lyrics: ILyric[];

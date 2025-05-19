@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/store';
 import { changeIsLoginAction, fetchCookieAction, fetchShowWindowAction } from './store';
 import { checkLoginQrStatus, createLoginQr, getLoginQrKey } from './service';
 import { useNavigate } from 'react-router-dom';
-import { fetchChangeUserAccount } from '@/store/modules/user';
+import { fetchChangeUserAccount, fetchChangeUserLevel } from '@/store/modules/user';
 
 interface IProps {
   children?: ReactNode;
@@ -73,6 +73,7 @@ const LoginWindow: FC<IProps> = () => {
             dispatch(fetchShowWindowAction(false));
             //登录完成请求一次用户账号信息，包括profile等内容以显示头像
             dispatch(fetchChangeUserAccount());
+            dispatch(fetchChangeUserLevel());
             setTimeout(() => {
               navigate('/'); // 登录成功后跳转
             }, 1000);

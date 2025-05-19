@@ -165,7 +165,7 @@ const User: FC<IProps> = () => {
         dropdownRender={() => menu}
         placement="bottom"
         arrow={{ pointAtCenter: true }}
-        trigger={['click']}
+        trigger={['hover']}
       >
         <img src={profile.avatarUrl} alt="" />
       </Dropdown>
